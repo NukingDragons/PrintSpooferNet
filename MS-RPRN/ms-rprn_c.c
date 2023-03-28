@@ -3,11 +3,11 @@
 /* this ALWAYS GENERATED file contains the RPC client stubs */
 
 
- /* File created by MIDL compiler version 8.01.0622 */
+ /* File created by MIDL compiler version 8.01.0626 */
 /* at Mon Jan 18 22:14:07 2038
  */
 /* Compiler settings for ms-rprn.idl:
-    Oicf, W1, Zp8, env=Win64 (32b run), target_arch=AMD64 8.01.0622 
+    Oicf, W1, Zp8, env=Win64 (32b run), target_arch=AMD64 8.01.0626 
     protocol : all , ms_ext, c_ext, robust
     error checks: allocation ref bounds_check enum stub_data 
     VC __declspec() decoration level: 
@@ -61,6 +61,58 @@ static const RPC_SYNTAX_IDENTIFIER  _RpcTransferSyntax =
 
 static const RPC_SYNTAX_IDENTIFIER  _NDR64_RpcTransferSyntax = 
 {{0x71710533,0xbeba,0x4937,{0x83,0x19,0xb5,0xdb,0xef,0x9c,0xcc,0x36}},{1,0}};
+
+#if defined(_CONTROL_FLOW_GUARD_XFG)
+#define XFG_TRAMPOLINES(ObjectType)\
+static unsigned long ObjectType ## _UserSize_XFG(unsigned long * pFlags, unsigned long Offset, void * pObject)\
+{\
+return  ObjectType ## _UserSize(pFlags, Offset, pObject);\
+}\
+static unsigned char * ObjectType ## _UserMarshal_XFG(unsigned long * pFlags, unsigned char * pBuffer, void * pObject)\
+{\
+return ObjectType ## _UserMarshal(pFlags, pBuffer, pObject);\
+}\
+static unsigned char * ObjectType ## _UserUnmarshal_XFG(unsigned long * pFlags, unsigned char * pBuffer, void * pObject)\
+{\
+return ObjectType ## _UserUnmarshal(pFlags, pBuffer, pObject);\
+}\
+static void ObjectType ## _UserFree_XFG(unsigned long * pFlags, void * pObject)\
+{\
+ObjectType ## _UserFree(pFlags, pObject);\
+}
+#define XFG_TRAMPOLINES64(ObjectType)\
+static unsigned long ObjectType ## _UserSize64_XFG(unsigned long * pFlags, unsigned long Offset, void * pObject)\
+{\
+return  ObjectType ## _UserSize64(pFlags, Offset, pObject);\
+}\
+static unsigned char * ObjectType ## _UserMarshal64_XFG(unsigned long * pFlags, unsigned char * pBuffer, void * pObject)\
+{\
+return ObjectType ## _UserMarshal64(pFlags, pBuffer, pObject);\
+}\
+static unsigned char * ObjectType ## _UserUnmarshal64_XFG(unsigned long * pFlags, unsigned char * pBuffer, void * pObject)\
+{\
+return ObjectType ## _UserUnmarshal64(pFlags, pBuffer, pObject);\
+}\
+static void ObjectType ## _UserFree64_XFG(unsigned long * pFlags, void * pObject)\
+{\
+ObjectType ## _UserFree64(pFlags, pObject);\
+}
+#define XFG_BIND_TRAMPOLINES(HandleType, ObjectType)\
+static void* ObjectType ## _bind_XFG(HandleType pObject)\
+{\
+return ObjectType ## _bind((ObjectType) pObject);\
+}\
+static void ObjectType ## _unbind_XFG(HandleType pObject, handle_t ServerHandle)\
+{\
+ObjectType ## _unbind((ObjectType) pObject, ServerHandle);\
+}
+#define XFG_TRAMPOLINE_FPTR(Function) Function ## _XFG
+#else
+#define XFG_TRAMPOLINES(ObjectType)
+#define XFG_TRAMPOLINES64(ObjectType)
+#define XFG_BIND_TRAMPOLINES(HandleType, ObjectType)
+#define XFG_TRAMPOLINE_FPTR(Function) Function
+#endif
 
 
 
@@ -3118,11 +3170,13 @@ static const ms2Drprn_MIDL_TYPE_FORMAT_STRING ms2Drprn__MIDL_TypeFormatString =
         }
     };
 
+XFG_BIND_TRAMPOLINES(unsigned long long, STRING_HANDLE)
+
 static const GENERIC_BINDING_ROUTINE_PAIR BindingRoutines[ GENERIC_BINDING_TABLE_SIZE ] = 
         {
         {
-            (GENERIC_BINDING_ROUTINE)STRING_HANDLE_bind,
-            (GENERIC_UNBIND_ROUTINE)STRING_HANDLE_unbind
+            (GENERIC_BINDING_ROUTINE) XFG_TRAMPOLINE_FPTR(STRING_HANDLE_bind),
+            (GENERIC_UNBIND_ROUTINE) XFG_TRAMPOLINE_FPTR(STRING_HANDLE_unbind)
          }
         
         };
@@ -3207,11 +3261,11 @@ static const unsigned short winspool_FormatStringOffsetTable[] =
 /* this ALWAYS GENERATED file contains the RPC client stubs */
 
 
- /* File created by MIDL compiler version 8.01.0622 */
+ /* File created by MIDL compiler version 8.01.0626 */
 /* at Mon Jan 18 22:14:07 2038
  */
 /* Compiler settings for ms-rprn.idl:
-    Oicf, W1, Zp8, env=Win64 (32b run), target_arch=AMD64 8.01.0622 
+    Oicf, W1, Zp8, env=Win64 (32b run), target_arch=AMD64 8.01.0626 
     protocol : all , ms_ext, c_ext, robust
     error checks: allocation ref bounds_check enum stub_data 
     VC __declspec() decoration level: 
@@ -3337,6 +3391,11 @@ __midl_frag142_t;
 extern const __midl_frag142_t __midl_frag142;
 
 typedef 
+NDR64_FORMAT_CHAR
+__midl_frag141_t;
+extern const __midl_frag141_t __midl_frag141;
+
+typedef 
 struct _NDR64_CONFORMANT_STRING_FORMAT
 __midl_frag140_t;
 extern const __midl_frag140_t __midl_frag140;
@@ -3345,6 +3404,11 @@ typedef
 struct _NDR64_POINTER_FORMAT
 __midl_frag139_t;
 extern const __midl_frag139_t __midl_frag139;
+
+typedef 
+NDR64_FORMAT_CHAR
+__midl_frag138_t;
+extern const __midl_frag138_t __midl_frag138;
 
 typedef 
 struct _NDR64_CONTEXT_HANDLE_FORMAT
@@ -3406,6 +3470,16 @@ struct
 }
 __midl_frag73_t;
 extern const __midl_frag73_t __midl_frag73;
+
+typedef 
+struct 
+{
+    struct _NDR64_PROC_FORMAT frag1;
+    struct _NDR64_BIND_AND_NOTIFY_EXTENSION frag2;
+    struct _NDR64_PARAM_FORMAT frag3;
+}
+__midl_frag71_t;
+extern const __midl_frag71_t __midl_frag71;
 
 typedef 
 struct 
@@ -3748,6 +3822,9 @@ static const __midl_frag142_t __midl_frag142 =
     &__midl_frag143
 };
 
+static const __midl_frag141_t __midl_frag141 =
+0x5    /* FC64_INT32 */;
+
 static const __midl_frag140_t __midl_frag140 =
 { 
 /* *wchar_t */
@@ -3777,6 +3854,9 @@ static const __midl_frag139_t __midl_frag139 =
     (NDR64_UINT16) 0 /* 0x0 */,
     &__midl_frag140
 };
+
+static const __midl_frag138_t __midl_frag138 =
+0x5    /* FC64_INT32 */;
 
 static const __midl_frag136_t __midl_frag136 =
 { 
@@ -3839,7 +3919,7 @@ static const __midl_frag135_t __midl_frag135 =
     },
     { 
     /* fdwFlags */      /* parameter fdwFlags */
-        &__midl_frag153,
+        &__midl_frag138,
         { 
         /* fdwFlags */
             0,
@@ -3863,7 +3943,7 @@ static const __midl_frag135_t __midl_frag135 =
     },
     { 
     /* fdwOptions */      /* parameter fdwOptions */
-        &__midl_frag153,
+        &__midl_frag138,
         { 
         /* fdwOptions */
             0,
@@ -3911,7 +3991,7 @@ static const __midl_frag135_t __midl_frag135 =
     },
     { 
     /* dwPrinterLocal */      /* parameter dwPrinterLocal */
-        &__midl_frag153,
+        &__midl_frag141,
         { 
         /* dwPrinterLocal */
             0,
@@ -4039,7 +4119,7 @@ static const __midl_frag131_t __midl_frag131 =
     },
     { 
     /* DWORD */      /* parameter DWORD */
-        &__midl_frag153,
+        &__midl_frag141,
         { 
         /* DWORD */
             0,
@@ -4130,6 +4210,58 @@ static const __midl_frag73_t __midl_frag73 =
         },    /* [in], [out], SimpleRef */
         (NDR64_UINT16) 0 /* 0x0 */,
         0 /* 0x0 */,   /* Stack offset */
+    },
+    { 
+    /* DWORD */      /* parameter DWORD */
+        &__midl_frag141,
+        { 
+        /* DWORD */
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            (NDR64_UINT16) 0 /* 0x0 */,
+            0
+        },    /* [out], IsReturn, Basetype, ByValue */
+        (NDR64_UINT16) 0 /* 0x0 */,
+        8 /* 0x8 */,   /* Stack offset */
+    }
+};
+
+static const __midl_frag71_t __midl_frag71 =
+{ 
+/* RpcWaitForPrinterChange */
+    { 
+    /* RpcWaitForPrinterChange */      /* procedure RpcWaitForPrinterChange */
+        (NDR64_UINT32) 17301568 /* 0x1080040 */,    /* explicit handle */ /* IsIntrepreted, HasReturn, HasExtensions */
+        (NDR64_UINT32) 16 /* 0x10 */ ,  /* Stack size */
+        (NDR64_UINT32) 0 /* 0x0 */,
+        (NDR64_UINT32) 8 /* 0x8 */,
+        (NDR64_UINT16) 0 /* 0x0 */,
+        (NDR64_UINT16) 0 /* 0x0 */,
+        (NDR64_UINT16) 1 /* 0x1 */,
+        (NDR64_UINT16) 8 /* 0x8 */
+    },
+    { 
+    /* struct _NDR64_BIND_AND_NOTIFY_EXTENSION */
+        { 
+        /* struct _NDR64_BIND_AND_NOTIFY_EXTENSION */
+            0x72,    /* FC64_BIND_PRIMITIVE */
+            (NDR64_UINT8) 0 /* 0x0 */,
+            0 /* 0x0 */,   /* Stack offset */
+            (NDR64_UINT8) 0 /* 0x0 */,
+            (NDR64_UINT8) 0 /* 0x0 */
+        },
+        (NDR64_UINT16) 0 /* 0x0 */      /* Notify index */
     },
     { 
     /* DWORD */      /* parameter DWORD */
@@ -4479,35 +4611,35 @@ static const __midl_frag1_t __midl_frag1 =
 
 static const FormatInfoRef winspool_Ndr64ProcTable[] =
     {
-    &__midl_frag131,
+    &__midl_frag71,
     &__midl_frag4,
-    &__midl_frag131,
-    &__midl_frag131,
-    &__midl_frag131,
-    &__midl_frag131,
-    &__midl_frag131,
-    &__midl_frag131,
-    &__midl_frag131,
-    &__midl_frag131,
-    &__midl_frag131,
-    &__midl_frag131,
-    &__midl_frag131,
-    &__midl_frag131,
-    &__midl_frag131,
-    &__midl_frag131,
-    &__midl_frag131,
-    &__midl_frag131,
-    &__midl_frag131,
-    &__midl_frag131,
-    &__midl_frag131,
-    &__midl_frag131,
-    &__midl_frag131,
-    &__midl_frag131,
-    &__midl_frag131,
-    &__midl_frag131,
-    &__midl_frag131,
-    &__midl_frag131,
-    &__midl_frag131,
+    &__midl_frag71,
+    &__midl_frag71,
+    &__midl_frag71,
+    &__midl_frag71,
+    &__midl_frag71,
+    &__midl_frag71,
+    &__midl_frag71,
+    &__midl_frag71,
+    &__midl_frag71,
+    &__midl_frag71,
+    &__midl_frag71,
+    &__midl_frag71,
+    &__midl_frag71,
+    &__midl_frag71,
+    &__midl_frag71,
+    &__midl_frag71,
+    &__midl_frag71,
+    &__midl_frag71,
+    &__midl_frag71,
+    &__midl_frag71,
+    &__midl_frag71,
+    &__midl_frag71,
+    &__midl_frag71,
+    &__midl_frag71,
+    &__midl_frag71,
+    &__midl_frag71,
+    &__midl_frag71,
     &__midl_frag73,
     &__midl_frag131,
     &__midl_frag131,
@@ -4562,7 +4694,7 @@ static const MIDL_STUB_DESC winspool_StubDesc =
     1, /* -error bounds_check flag */
     0x60001, /* Ndr library version */
     0,
-    0x801026e, /* MIDL Version 8.1.622 */
+    0x8010272, /* MIDL Version 8.1.626 */
     0,
     0,
     0,  /* notify & notify_flag routine table */
